@@ -10,7 +10,7 @@ class WelcomeController extends Controller
 {
     public function index() {
 
-    	$data = DB::table('player')->orderBy('level', 'desc')->paginate(2);
+    	$data = DB::table('player')->orderBy('level', 'desc')->paginate(5);
 
     	return view('welcome' , ['data' => $data]);
     }

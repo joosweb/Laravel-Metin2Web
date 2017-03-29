@@ -14,7 +14,10 @@
 Route::get('/', 'WelcomeController@index');
 
 Route::get('/registro-de-usuarios', function() {
-	return view('registro');
+
+	$data = DB::table('player')->orderBy('level', 'desc')->paginate(5);
+
+	return view('registro', ['data' => $data]);
 });
 
 Route::post('/registro-de-usuarios' , 'RegistroController@store');

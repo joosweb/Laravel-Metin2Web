@@ -34,6 +34,9 @@
         <li class="active"><a href="index.php?p=home">INICIO <span class="sr-only">(current)</span></a></li>
         <li><a href="/registro-de-usuarios">REGISTRO <span class="sr-only">(current)</span></a></li>
         <li><a href="#">RANKING <span class="sr-only">(current)</span></a></li>
+        @if (Auth::user())
+        <li><a href="#">TIENDA <span class="sr-only">(current)</span></a></li>
+        @endif
         <li><a href="#">COMO JUGAR <span class="sr-only">(current)</span></a></li>
         <li><a href="#">REGLAS <span class="sr-only">(current)</span></a></li>
         <li><a href="#">FORO <span class="sr-only">(current)</span></a></li>
@@ -64,9 +67,18 @@
                     <button  type="submit" class="btn btn-success btn-sm"><em class="icon-ok"></em> Entrar</button>
                 <a class="btn btn-warning btn-sm" href="/registro-de-usuarios"><em class="icon-user"></em> Registrarse</a>
        </form> 
-      @else
-     {{ Auth::user()->login }}
-      <a class="btn btn-warning btn-sm" style="float:right; margin-top:5px !important;" href="/cerrar-session"><em class="icon-user"></em> Cerrar Sessión</a>
+      @else     
+     <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" style="font-size:16px;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->login }}<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Recargar Coins</a></li>
+            <li><a href="#">Tienda</a></li>
+            <li><a href="#">Panel de Usuario</a></li>
+            <li><a href="/cerrar-session">Salir</a></li>
+          </ul>
+        </li>
+      </ul>
       @endif
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -195,7 +207,6 @@
          @endif        
           </table>
         </table>
-        {!! $data->links() !!}
     <hr>
     <center><a href="" class="btn btn-danger" style="width:100%;">Ver Ranking completo</a></center>
    </div>
