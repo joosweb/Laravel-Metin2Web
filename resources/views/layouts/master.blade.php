@@ -3,12 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<script type="text/javascript" src="js/boostrap.min.css"></script>
+	<link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
+	<link rel="stylesheet" href="{{URL::asset('css/bootstrap.css')}}">
+	<script type="text/javascript" src="{{URL::asset('js/boostrap.min.css')}}"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> 
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="{{URL::asset('js/bootstrap.min.js')}}"></script>
+  <script type="text/javascript" src="{{URL::asset('js/main.js')}}"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,7 +35,7 @@
         <li><a href="/registro-de-usuarios">REGISTRO <span class="sr-only">(current)</span></a></li>
         <li><a href="#">RANKING <span class="sr-only">(current)</span></a></li>
         @if (Auth::user())
-        <li><a href="#">TIENDA <span class="sr-only">(current)</span></a></li>
+        <li><a href="/tienda-de-articulos">TIENDA <span class="sr-only">(current)</span></a></li>
         @endif
         <li><a href="#">COMO JUGAR <span class="sr-only">(current)</span></a></li>
         <li><a href="#">REGLAS <span class="sr-only">(current)</span></a></li>
@@ -97,17 +97,17 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="img/banner1.jpg" class="zommimg" alt="..." width="100%">
+      <img src="{{URL::asset('img/banner1.jpg')}}" class="zommimg" alt="..." width="100%">
       <div class="carousel-caption">
       </div>
     </div>
     <div class="item">
-      <img src="img/banner2.jpg" alt="..." width="100%">
+      <img src="{{URL::asset('img/banner2.jpg')}}" alt="..." width="100%">
       <div class="carousel-caption">
       </div>
     </div>
      <div class="item">
-      <img src="img/banner2.jpg" alt="..." width="100%">
+      <img src="{{URL::asset('img/banner2.jpg')}}" alt="..." width="100%">
       <div class="carousel-caption">
       </div>
     </div>
@@ -186,25 +186,14 @@
   <div class="panel-body"> 
     <table class="table table-hover">
       <button class="btn btn-success" style="width:170px">Jugadores</button><button class="btn btn-warning" style="width:170px">Gremios</button>
-      <table class="table">
-        <tr>
+        <table class="table">
+          <tr>
           <th>#</th>
           <th>Personaje</th>
           <th>Nombre</th>
           <th>Reino</th>
           <th>Nivel</th>
-        </tr>
-        @if($data) 
-        @foreach($data as $datos)
-         <tr>
-          <td>{{ $datos->id }}</td>
-          <th><img src="img/raza/0.png" alt="" class="img-circle"> <span style="color:#3FB618;">Lv</span> {{ $datos->level }}</th>
-          <td><a href="">{{ $datos->name }}</a></td>
-          <td><img src="img/reino/1.png" width="40" alt=""></td>
-          <td><a href="">{{ $datos->level }}</a></td>
-          </tr>
-          @endforeach
-         @endif        
+          </tr>          
           </table>
         </table>
     <hr>

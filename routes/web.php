@@ -11,24 +11,25 @@
 |
 */
 
+// INDEX
 Route::get('/', 'WelcomeController@index');
 
-Route::get('/registro-de-usuarios', function() {
+// REGISTRO
+Route::get('/registro-de-usuarios', function() { return view('registro'); });
 
-	$data = DB::table('player')->orderBy('level', 'desc')->paginate(5);
-
-	return view('registro', ['data' => $data]);
-});
-
+// POST REGISTRO
 Route::post('/registro-de-usuarios' , 'RegistroController@store');
 
+// TIENDA
+Route::get('/tienda-de-articulos', 'tienda\TiendaController@index');
+
+// COMPRAR EN TIENDA 
+Route::get('/tienda-de-articulos/{id}/comprar', 'tienda\TiendaController@show');
+
+// LOGIN 
 Route::post('/inicio-de-session' , 'LoginController@getLogin');
 
-
-Route::get('/cerrar-session', function()
-	{
-		Auth::logout();
-		return redirect('/');
-	});
+// OUT LOGIN
+Route::get('/cerrar-session', function() { Auth::logout(); return redirect('/'); });
 
 
