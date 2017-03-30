@@ -43,7 +43,7 @@ return [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'metin2'),
+            'database' => env('DB_DATABASE', 'account'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', '123456'),
             'charset' => 'utf8mb4',
@@ -54,11 +54,11 @@ return [
             'engine' => null,
         ],
 
-        'itemshop' => [
+        'player' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE_ITEMSHOP', 'itemshop'),
+            'database' => env('DB_DATABASE_ITEMSHOP', 'player'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', '123456'),
             'charset' => 'utf8mb4',

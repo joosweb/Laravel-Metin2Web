@@ -9,7 +9,7 @@
 		<div class="col-md-12">
 			<div class="col-md-3">
 			 @foreach($categoria as $categorias)
-			 <a href="" style="width:100%; margin:1px !important;" class="btn btn-success btn-sm">
+			 <a href="/tienda-de-articulos/categoria/{{ $categorias->id_categoria }}" style="width:100%; margin:1px !important;" class="btn btn-success btn-sm">
 			 {{ $categorias->name_categoria }}</a>
 			 @endforeach		
 			 </div>
@@ -25,7 +25,7 @@
 			  <div class="panel panel-default" style="margin-top:-1px;">
 				  <div class="panel-body">
 				     @foreach($articulo as $articulos)
-					<table class="table">
+					 <table class="table">
 						<tr>
 							<td rowspan="3"><img src="http://www.uslanmam.com/customavatars1/avatar533620_2.gif" width="500"></td>
 							<td><b><u>{{ $articulos->name }}</u></b></td>
@@ -44,8 +44,8 @@
 				</div>			 
 				{{ $articulo->render() }}				
 			</div>
-		</div>
-	</div>
-  </div>
-</div>
+		 </div>
+	  </div>
+    </div>
+ </div>
 @stop

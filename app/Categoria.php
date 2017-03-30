@@ -9,7 +9,7 @@ class Categoria extends Model
 {
     use Notifiable;
 
-    protected $connection ='itemshop';
+    protected $connection ='player';
     
     protected $table = 'categorias';
     

@@ -23,8 +23,11 @@ Route::post('/registro-de-usuarios' , 'RegistroController@store');
 // TIENDA
 Route::get('/tienda-de-articulos', 'tienda\TiendaController@index');
 
+// NAVEGAR POR CATEGORIA 
+Route::get('/tienda-de-articulos/categoria/{id}', 'tienda\TiendaController@getItems');
+
 // COMPRAR EN TIENDA 
-Route::get('/tienda-de-articulos/{id}/comprar', 'tienda\TiendaController@show');
+Route::get('/tienda-de-articulos/{id}/comprar', 'tienda\TiendaController@buy');
 
 // LOGIN 
 Route::post('/inicio-de-session' , 'LoginController@getLogin');

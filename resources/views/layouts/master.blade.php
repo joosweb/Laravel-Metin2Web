@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title></title>
+	<title>Metin2</title>
 	<link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
 	<link rel="stylesheet" href="{{URL::asset('css/bootstrap.css')}}">
 	<script type="text/javascript" src="{{URL::asset('js/boostrap.min.css')}}"></script>

@@ -9,7 +9,8 @@ class Itemshop extends Model
 {
     use Notifiable;
     
-    protected $connection ='itemshop';
+    protected $connection ='player';
+    
     protected $table = 'item_proto_shop';
     
     public $timestamps = false;

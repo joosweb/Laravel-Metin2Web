@@ -9,7 +9,10 @@ class Player extends Model
 {
     use Notifiable;
     
-    protected $table = 'account';
+    protected $connection ='player';
+    
+    protected $table = 'player';
+
     public $timestamps = false;
     /**
      * The attributes that are mass assignable.
