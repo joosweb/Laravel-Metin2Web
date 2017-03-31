@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use App\Account;
 use Illuminate\Http\Request;
-use App\Http\Requests\RegisterRequest;
-use DateTime;
-use DB;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -17,21 +14,19 @@ class LoginController extends Controller
      * @return Response
      */
     public function getLogin(Request $request)
-    {   
-         /**
+    {
+        /**
          * Mysql 5.* password() replacement.
          *
          * @param $password
          * @return string
          */
-        $password = '*'.strtoupper(sha1(sha1($request["password"], true)));
+        $password = '*' . strtoupper(sha1(sha1($request["password"], true)));
 
         if ($Account = Account::where('login', $request['login'])->where('password', $password)->first()) {
             Auth::loginUsingId($Account->id, true);
             return redirect()->intended('/');
-        }
-        
-        else {
+        } else {
             return redirect()->intended('/')->with('error', 'Error de inicio de sesión');
         }
     }

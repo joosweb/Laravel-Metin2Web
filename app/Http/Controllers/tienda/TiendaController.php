@@ -2,50 +2,85 @@
 
 namespace App\Http\Controllers\tienda;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Categoria;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\FuncionesController;
 use App\Itemshop;
-use App\Account;
-use DateTime;
-use DB;
 
 class TiendaController extends Controller
 {
-    public function index() {
+    public function index()
+    {
 
-    	$categorias = Categoria::all(); 
+        $categorias = Categoria::all();
 
-    	$articulos = Itemshop::paginate(5);
+        $articulos = Itemshop::paginate(5);
 
-    	return view('/tienda/tienda', ['categoria' => $categorias, 'articulo' => $articulos])->with('success', false);
+        $controller = new FuncionesController;
+
+        $coins = [
+            'coins' => $controller->getCoins(),
+        ];
+
+        return view('/tienda/tienda', ['categoria' => $categorias, 'articulo' => $articulos, 'coins' => $coins['coins']])->with('mensaje', false);
     }
 
-    public function buy($vnum) {
+    public function buy($vnum)
+    {
 
-    	 $categorias = Categoria::all();
+        // LISTADO DE CATEGORIAS E ITEMS
+        $categorias = Categoria::all();
+        $articulos  = Itemshop::paginate(5);
 
-    	 $articulos = Itemshop::paginate(5);
-         
-         $now = new DateTime();
+        $controller = new FuncionesController;
 
-         return View('/tienda/tienda', ['categoria' => $categorias, 'articulo' => $articulos])->with('success', 'El item ha sido comprado satisfactoriamente');
+        //// INSERTAR ITEM EN ITEM_AWARD
+        $buy = new FuncionesController;
+
+        $mensaje = [
+            'success' => ['El item ha sido comprado satisfactoriamente', 'success'],
+            'NoCoins' => ['Coins insuficientes, puedes recargar en el siguiente link ...', 'warning'],
+            'NoExist' => ['El item seleccionado no existe en la tienda.', 'danger'],
+        ];
+
+        switch ($buy->BuyItem($vnum)) {
+
+            case 'success':
+                $coins = [
+                    'coins' => $controller->getCoins(),
+                ];
+                return View('/tienda/tienda', ['categoria' => $categorias, 'articulo' => $articulos, 'coins' => $coins['coins']])->with('mensaje', $mensaje['success']);
+                break;
+            case 'NoCoins':
+                $coins = [
+                    'coins' => $controller->getCoins(),
+                ];
+                return View('/tienda/tienda', ['categoria' => $categorias, 'articulo' => $articulos, 'coins' => $coins['coins']])->with('mensaje', $mensaje['NoCoins']);
+                break;
+            case 'NoExist':
+                $coins = [
+                    'coins' => $controller->getCoins(),
+                ];
+                return View('/tienda/tienda', ['categoria' => $categorias, 'articulo' => $articulos, 'coins' => $coins['coins']])->with('mensaje', $mensaje['NoExist']);
+                break;
+        }
+
+        /////////////////////////////////////
+
     }
 
-    public function getItems($id) {
+    public function getItems($id)
+    {
 
-         $categorias = Categoria::all(); 
+        $categorias = Categoria::all();
 
-         $articulos = Itemshop::where('id_categoria', $id)->paginate(5);
+        $articulos = Itemshop::where('id_categoria', $id)->paginate(5);
 
-         if($articulos) {
-            return View('/tienda/tienda', ['categoria' => $categorias, 'articulo' => $articulos])->with('success', false);
-         }
-         else {
-            return View('/tienda/tienda', ['categoria' => $categorias, 'articulo' => $articulos])->with('success', 'No existen articulos para esta categoria');
-         }
+        if ($articulos) {
+            return View('/tienda/tienda', ['categoria' => $categorias, 'articulo' => $articulos])->with('mensaje', false);
+        } else {
+            return View('/tienda/tienda', ['categoria' => $categorias, 'articulo' => $articulos])->with('mensaje', 'No existen articulos para esta categoria');
+        }
 
-         
     }
 }
