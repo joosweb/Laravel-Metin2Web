@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class FuncionesController extends Controller
 {
+
     public function CheckItemExist($vnum)
     {
         $query = DB::table('player.item_proto_shop')->select('prices')->where('vnum', $vnum)->first();
@@ -47,6 +48,8 @@ class FuncionesController extends Controller
 
         $now = new DateTime();
 
+        $query = DB::table('player.item_proto_shop')->select('count')->where('vnum', $vnum)->first();
+
         if ($this->CheckItemExist($vnum)) {
 
             if ($this->CheckCoins($vnum)) {
@@ -55,7 +58,7 @@ class FuncionesController extends Controller
                 $item_award->pid        = Auth::User()->id;
                 $item_award->login      = 'koxesaurio';
                 $item_award->vnum       = $vnum;
-                $item_award->count      = 1;
+                $item_award->count      = $query->count;
                 $item_award->given_time = $now;
                 $item_award->taken_time = null;
                 $item_award->item_id    = 149;
