@@ -4,22 +4,22 @@
   <div class="panel-heading">
     <h3 class="panel-title">Registro de Usuarios</h3>
   </div>
-  <div class="panel-body">	
+  <div class="panel-body">
 	<div class="row">
 		<div class="col-md-12">
-		 @if (!empty($success))		
+		 @if (!empty($success))
 		 <div class="alert alert-dismissible alert-success">
 			  <button type="button" class="close" data-dismiss="alert">&times;</button>
-			  <ul>			  
-			  	<li>{{ $success }}</li>			  		  
+			  <ul>
+			  	<li>{{ $success }}</li>
 			  </ul>
 			</div>
 			@endif
-			@if (!empty($error))		
+			@if (!empty($error))
 			 <div class="alert alert-dismissible alert-success">
 			  <button type="button" class="close" data-dismiss="alert">&times;</button>
-			  <ul>			  
-			  	<li>{{ $error }}</li>			  		  
+			  <ul>
+			  	<li>{{ $error }}</li>
 			  </ul>
 			</div>
 			@endif
@@ -29,7 +29,7 @@
 			  <ul>
 			  @foreach( $errors->all() as $error )
 			  <li>{{ $error }}</li>
-			  @endforeach			  
+			  @endforeach
 			  </ul>
 			</div>
 			@endif
@@ -37,28 +37,28 @@
 			<form method="post">
 			 {!! csrf_field() !!}
 			  <div class="form-group">
-			    <label for="exampleInputEmail1">Usuario</label>
-			    <input type="text" class="form-control" name="login" value="{{ old('login') }}" style="width:80%;" id="exampleInputEmail1" placeholder="Usuario">
+			    <label for="exampleInputEmail1">Usuario </label>
+			    <input type="text" class="form-control input-sm" name="login" value="{{ old('login') }}" style="width:80%;" id="exampleInputEmail1" placeholder="Usuario">
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleInputPassword1">Contraseña</label>
-			    <input type="password" class="form-control" name="password" style="width:80%;" id="exampleInputPassword1" placeholder="Contraseña">
+			    <input type="password" class="form-control input-sm" name="password" style="width:80%;" id="exampleInputPassword1" placeholder="Contraseña">
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleInputPassword1">Real Name / Nombre Real</label>
-			    <input type="text" class="form-control" name="real_name" value="{{ old('real_name') }}" style="width:80%;" id="exampleInputPassword1" placeholder="Nombre">
+			    <input type="text" class="form-control input-sm" name="real_name" value="{{ old('real_name') }}" style="width:80%;" id="exampleInputPassword1" placeholder="Nombre">
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleInputPassword1">Social ID / Codigo de borrado de personajes</label>
-			    <input type="text" class="form-control" name="social_id" value="{{ old('social_id') }}" style="width:80%;"  id="exampleInputPassword1" placeholder="Codigo de borrado">
+			    <input type="text" class="form-control input-sm" name="social_id" value="{{ old('social_id') }}" style="width:80%;"  id="exampleInputPassword1" placeholder="Codigo de borrado">
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleInputPassword1">Email</label>
-			    <input type="email" class="form-control" name="email" value="{{ old('email') }}" style="width:80%;" id="exampleInputPassword1" placeholder="Email">
+			    <input type="email" class="form-control input-sm" name="email" value="{{ old('email') }}" style="width:80%;" id="exampleInputPassword1" placeholder="Email">
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleInputPassword1">Pais</label>
-			   <select name="zipcode" id="account_tmp_ms_pais_id" class="form-control" style="width:80%; color:black !important;">
+			   <select name="zipcode" id="account_tmp_ms_pais_id" class="form-control input-sm" style="width:80%; color:black !important;">
 				<option value="1" selected="selected">No especificado</option>
 				<option value="2">Afganistán</option>
 				<option value="3">Islas Gland</option>
@@ -301,6 +301,10 @@
 				<option value="240">Zambia</option>
 				<option value="241">Zimbabue</option>
 				</select>
+			   </div>
+			   <div class="form-group">
+				   <label> Captcha </label>
+				   	{!! app('captcha')->display(); !!}
 			   </div>
 			  <button type="submit" class="btn btn-primary">Registrar</button>
 			</form>

@@ -4261,7 +4261,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-fixed-top,
 .navbar-fixed-bottom {
-  position: fixed;
+  position:fixed;
   right: 0;
   left: 0;
   z-index: 1030;
@@ -6940,3 +6940,5 @@ a.list-group-item-danger.active:focus {
 .popover {
   color: #333333;
 }
+
+

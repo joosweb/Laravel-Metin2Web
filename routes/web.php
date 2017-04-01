@@ -23,6 +23,9 @@ Route::post('/registro-de-usuarios', 'RegistroController@store');
 // TIENDA
 Route::get('/tienda-de-articulos', 'tienda\TiendaController@index');
 
+// TIENDA DETALLES
+Route::get('/getLocation', array('as' => 'getLocation', 'uses' => 'tienda\TiendaController@getDetails'));
+
 // NAVEGAR POR CATEGORIA
 Route::get('/tienda-de-articulos/categoria/{id}', 'tienda\TiendaController@getItems');
 

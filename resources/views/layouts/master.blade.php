@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Metin2</title>
-	<link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
-	<link rel="stylesheet" href="{{URL::asset('css/bootstrap.css')}}">
-	<script type="text/javascript" src="{{URL::asset('js/boostrap.min.css')}}"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> 
-	<script type="text/javascript" src="{{URL::asset('js/bootstrap.min.js')}}"></script>
+  <meta charset="UTF-8">
+  <title>Metin2</title>
+  <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
+  <link rel="stylesheet" href="{{URL::asset('css/bootstrap.css')}}">
+  <script type="text/javascript" src="{{URL::asset('js/boostrap.min.css')}}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="{{URL::asset('js/bootstrap.min.js')}}"></script>
   <script type="text/javascript" src="{{URL::asset('js/main.js')}}"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -66,8 +66,8 @@
                     </div>
                     <button  type="submit" class="btn btn-success btn-sm"><em class="icon-ok"></em> Entrar</button>
                 <a class="btn btn-warning btn-sm" href="/registro-de-usuarios"><em class="icon-user"></em> Registrarse</a>
-       </form> 
-      @else     
+       </form>
+      @else
      <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" style="font-size:16px;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->login }}<span class="caret"></span></a>
@@ -83,9 +83,12 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<br>
+<br>
+<br><br>
+<div class="container">
 <!-- FIN NAV -->
 <!-- CONTAINER -->
-<div class="container-fluid">
 <div class="well">
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
@@ -141,7 +144,7 @@
        <th>Chan2</th>
        <th>Chan3</th>
        <th>Chan4</th>
-      </tr>    
+      </tr>
       <tr>
         <td><span class="btn btn-success btn-xs"> <i class="fa fa-arrow-up"></i></span></td>
         <td><span class="btn btn-success btn-xs"> <i class="fa fa-arrow-up"></i></span></td>
@@ -149,7 +152,7 @@
         <td><span class="btn btn-success btn-xs"> <i class="fa fa-arrow-up"></i></span></td>
         <td><span class="btn btn-success btn-xs"> <i class="fa fa-arrow-up"></i></span></td>
         <td><span class="btn btn-success btn-xs"> <i class="fa fa-arrow-up"></i></span></td>
-      </tr>  
+      </tr>
     </table>
     <hr>
     <table class="table">
@@ -177,15 +180,15 @@
     </table>
   </div>
 </div>
-</div> 
-<div class="col-md-4" style="margin-top:-3%;"> 
+</div>
+<div class="col-md-4" style="margin-top:-3%;">
   <div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title"><span class="glyphicon glyphicon-play"> </span> RANKING</h3>
   </div>
-  <div class="panel-body"> 
+  <div class="panel-body">
     <table class="table table-hover">
-      <button class="btn btn-success" style="width:170px">Jugadores</button><button class="btn btn-warning" style="width:170px">Gremios</button>
+      <button class="btn btn-success" style="width:155px">Jugadores</button><button class="btn btn-warning" style="width:155px">Gremios</button>
         <table class="table">
           <tr>
           <th>#</th>
@@ -193,7 +196,7 @@
           <th>Nombre</th>
           <th>Reino</th>
           <th>Nivel</th>
-          </tr>          
+          </tr>
           </table>
         </table>
     <hr>
@@ -210,7 +213,7 @@
 </div>
 </div>
   </div>
-  </div>
+  </div></div>
   <footer class="footer-distributed" style="margin-top:-10px;">
       <div class="footer-left">
        <img src="http://i.hizliresim.com/1YVgZj.png" style="margin-top:-9px;" alt="" width="190px;">
