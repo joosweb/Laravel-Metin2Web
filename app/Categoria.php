@@ -9,10 +9,10 @@ class Categoria extends Model
 {
     use Notifiable;
 
-    protected $connection ='player';
-    
-    protected $table = 'categorias';
-    
+    protected $connection = 'player';
+
+    protected $table = 'shop_class';
+
     public $timestamps = false;
     /**
      * The attributes that are mass assignable.
@@ -20,7 +20,7 @@ class Categoria extends Model
      * @var array
      */
     protected $fillable = [
-        'id_categoria','name_categoria',
+        'classid', 'classname',
     ];
 
     /**
