@@ -6,17 +6,18 @@ use App\Categoria;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\FuncionesController;
 use App\Itemshop;
+use DB;
+use Illuminate\Http\Request;
 
 class TiendaController extends Controller
 {
     public function index()
     {
+        $controller = new FuncionesController;
 
-        $categorias = Categoria::all();
+        $categorias = Categoria::get();
 
         $articulos = Itemshop::paginate(5);
-
-        $controller = new FuncionesController;
 
         $coins = [
             'coins' => $controller->getCoins(),
@@ -76,11 +77,25 @@ class TiendaController extends Controller
 
         $articulos = Itemshop::where('id_categoria', $id)->paginate(5);
 
+        $controller = new FuncionesController;
+
+        $coins = [
+            'coins' => $controller->getCoins(),
+        ];
+
         if ($articulos) {
-            return View('/tienda/tienda', ['categoria' => $categorias, 'articulo' => $articulos])->with('mensaje', false);
+            return View('/tienda/tienda', ['categoria' => $categorias, 'articulo' => $articulos, 'coins' => $coins['coins']])->with('mensaje', false);
         } else {
-            return View('/tienda/tienda', ['categoria' => $categorias, 'articulo' => $articulos])->with('mensaje', 'No existen articulos para esta categoria');
+            return View('/tienda/tienda', ['categoria' => $categorias, 'articulo' => $articulos, 'coins' => $coins['coins']])->with('mensaje', 'No existen articulos para esta categoria');
         }
 
+    }
+
+    public function getDetails(Request $request)
+    {
+        $vnum  = $request->vnum;
+        $query = DB::table('player.item_proto_shop')->where('vnum', $vnum)->first();
+
+        return view('tienda', ['result' => json_encode($query)]);
     }
 }
