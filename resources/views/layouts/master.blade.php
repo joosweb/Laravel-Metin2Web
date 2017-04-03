@@ -26,16 +26,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><img src="http://i.hizliresim.com/1YVgZj.png" style="margin-top:-20px;" alt="" width="190px;"></a>
+      <a class="navbar-brand" href="#"><img src="/img/logo_dream.png" style="margin-top:-10px;" alt="" width="170px;"></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="index.php?p=home">INICIO <span class="sr-only">(current)</span></a></li>
-        <li><a href="/registro-de-usuarios">REGISTRO <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">RANKING <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="/">INICIO <span class="sr-only">(current)</span></a></li>
+        <li><a href="/registro-de-usuarios/">REGISTRO <span class="sr-only">(current)</span></a></li>
+        <li><a href="/ranking-general/">RANKING <span class="sr-only">(current)</span></a></li>
         @if (Auth::user())
-        <li><a href="/tienda-de-articulos">TIENDA <span class="sr-only">(current)</span></a></li>
+        <li><a href="/tienda-de-articulos/">TIENDA <span class="sr-only">(current)</span></a></li>
         @endif
         <li><a href="#">COMO JUGAR <span class="sr-only">(current)</span></a></li>
         <li><a href="#">REGLAS <span class="sr-only">(current)</span></a></li>
@@ -187,20 +187,9 @@
     <h3 class="panel-title"><span class="glyphicon glyphicon-play"> </span> RANKING</h3>
   </div>
   <div class="panel-body">
-    <table class="table table-hover">
-      <button class="btn btn-success" style="width:155px">Jugadores</button><button class="btn btn-warning" style="width:155px">Gremios</button>
-        <table class="table">
-          <tr>
-          <th>#</th>
-          <th>Personaje</th>
-          <th>Nombre</th>
-          <th>Reino</th>
-          <th>Nivel</th>
-          </tr>
-          </table>
-        </table>
+    @yield('top5')
     <hr>
-    <center><a href="" class="btn btn-danger" style="width:100%;">Ver Ranking completo</a></center>
+    <center><a href="/ranking-general/" class="btn btn-danger" style="width:100%;">Ver Ranking completo</a></center>
    </div>
   </div>
   <div class="panel panel-primary" style="margin-top:-3%;">
@@ -216,7 +205,7 @@
   </div></div>
   <footer class="footer-distributed" style="margin-top:-10px;">
       <div class="footer-left">
-       <img src="http://i.hizliresim.com/1YVgZj.png" style="margin-top:-9px;" alt="" width="190px;">
+       <img src="/img/logo_dream.png" style="margin-top:-9px;" alt="" width="190px;">
         <p class="footer-links">
           <a href="index.php?p=home">Inicio</a>
           ·

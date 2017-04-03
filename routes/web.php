@@ -15,7 +15,7 @@
 Route::get('/', 'WelcomeController@index');
 
 // REGISTRO
-Route::get('/registro-de-usuarios', function () {return view('registro');});
+Route::get('/registro-de-usuarios', 'RegistroController@index');
 
 // POST REGISTRO
 Route::post('/registro-de-usuarios', 'RegistroController@store');
@@ -32,8 +32,18 @@ Route::get('/tienda-de-articulos/categoria/{id}', 'tienda\TiendaController@getIt
 // COMPRAR EN TIENDA
 Route::get('/tienda-de-articulos/{id}/comprar', 'tienda\TiendaController@buy');
 
+// RANKING GENERAL
+Route::get('/ranking-general', 'RankingController@index');
+
+// RANKING BUSQUEDA
+Route::post('/ranking-general/', 'RankingController@search');
+
 // LOGIN
 Route::post('/inicio-de-session', 'LoginController@getLogin');
 
 // OUT LOGIN
 Route::get('/cerrar-session', function () {Auth::logout();return redirect('/');});
+
+Route::get('/panel-de-usuario', 'UserPanelController@index');
+// PERFIL DE USUARIO
+Route::get('/perfil/ver/{id}/', 'PerfilController@index');

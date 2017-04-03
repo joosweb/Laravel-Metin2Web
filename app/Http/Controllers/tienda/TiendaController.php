@@ -75,7 +75,7 @@ class TiendaController extends Controller
 
         $categorias = Categoria::all();
 
-        $articulos = Itemshop::where('id_categoria', $id)->paginate(5);
+        $articulos = Itemshop::where('classid', $id)->paginate(5);
 
         $controller = new FuncionesController;
 

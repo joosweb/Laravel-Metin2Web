@@ -8,6 +8,12 @@ use DB;
 
 class RegistroController extends Controller
 {
+
+    public function index()
+    {
+        return view('registro');
+    }
+
     public function store(RegisterRequest $request)
     {
 
@@ -21,23 +27,6 @@ class RegistroController extends Controller
             return view('registro')->withError('El registro ha fallado, por favor contacte con un administrador, o intente nuevamente.');
         }
 
-        /*DB::table('account')->insert([
-        'login' => $request['login'],
-        'password' => $request['password'],
-        'real_name' => $request['real_name'],
-        'social_id' => $request['social_id'],
-        'email' => $request['email'],
-        'zipcode' => $request['zipcode'],
-        ]); */
-
-        /*$account = Account::create([
-    'login' => $request['login'],
-    'password' => $request['password'],
-    'real_name' => $request['real_name'],
-    'social_id' => $request['social_id'],
-    'email' => $request['email'],
-    'zipcode' => $request['zipcode'],
-    ]);*/
-
     }
+
 }

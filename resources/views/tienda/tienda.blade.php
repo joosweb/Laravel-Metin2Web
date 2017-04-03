@@ -1,4 +1,27 @@
 @extends('layouts.master')
+@section('top5')
+ <table class="table table-hover">
+      <button class="btn btn-success" style="width:155px">Jugadores</button><button class="btn btn-warning" style="width:155px">Gremios</button>
+        <table class="table">
+          <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Nivel</th>
+                <th>Reino</th>
+                <th>Pais</th>
+                </tr>
+                  @foreach($rankingtop as $rankingtops)
+                <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td><a href="/perfil/ver/{{ $rankingtops->name }}">{{ $rankingtops->name }}</a></td>
+                <td>{{ $rankingtops->level }}</td>
+                <td><img src="../img/reino/{{ $rankingtops->empire }}.png" width="20"></td>
+                <td><img src="../img/country/{{ $rankingtops->zipcode }}.png" width="20"></td>
+            </tr>
+            @endforeach
+          </table>
+        </table>
+@stop
 @section('content')
 <script type="text/javascript">
 	$(function() {
@@ -50,13 +73,13 @@
   <div class="panel-body">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="col-md-4">
+			<div class="col-md-3">
 			 @foreach($categoria as $categorias)
 			 <a href="/tienda-de-articulos/categoria/{{ $categorias->classid }}" style="width:100%; margin:1px !important;" class="btn btn-success btn-sm">
 			 {{ $categorias->classname }}</a>
 			 @endforeach
 			 </div>
-			 <div class="col-md-8">
+			 <div class="col-md-9">
 			 @if($mensaje)
 			    <div class="alert alert-{{ $mensaje[1] }} alert-block">
 			        <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -72,7 +95,7 @@
 						<tr>
 							<td rowspan="3"><img src="http://www.uslanmam.com/customavatars1/avatar533620_2.gif" width="500"></td>
 							<td><b><u>{{ $articulos->name }}</u></b></td>
-							<td>Precio: <b>{{ $articulos->prices }}</b> COINS</td>
+							<td align="right">Precio: <b>{{ $articulos->prices }}</b> COINS</td>
 						   </tr>
 						   <tr>
 							<td colspan="2"><b><u>Descripcion:</u></b> {{ $articulos->content }}</td>

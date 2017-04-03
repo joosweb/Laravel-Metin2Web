@@ -22,13 +22,13 @@ class FuncionesController extends Controller
 
     public function getCoins()
     {
-        $query = DB::table('account.account')->select('coins')->where('login', Auth::user()->login)->first();
+        $query = DB::table('account.account')->select('cash as coins')->where('login', Auth::user()->login)->first();
         return $query->coins;
     }
 
     public function CheckCoins($vnum)
     {
-        $query = DB::table('account.account')->select('coins')->where('login', Auth::user()->login)->first();
+        $query = DB::table('account.account')->select('cash')->where('login', Auth::user()->login)->first();
         if ($query->coins >= $this->CheckItemExist($vnum)) {
             $coinsResult = ($query->coins - $this->CheckItemExist($vnum));
             if (DB::table('account')

@@ -1,4 +1,27 @@
 @extends('layouts.master')
+@section('top5')
+ <table class="table table-hover">
+      <button class="btn btn-success" style="width:155px">Jugadores</button><button class="btn btn-warning" style="width:155px">Gremios</button>
+        <table class="table">
+          <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Nivel</th>
+                <th>Reino</th>
+                <th>Pais</th>
+                </tr>
+                  @foreach($rankingtop as $rankingtops)
+                <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td><a href="/perfil/ver/{{ $rankingtops->name }}">{{ $rankingtops->name }}</a></td>
+                <td>{{ $rankingtops->level }}</td>
+                <td><img src="../../img/reino/{{ $rankingtops->empire }}.png" width="20"></td>
+                <td><img src="../../img/country/{{ $rankingtops->zipcode }}.png" width="20"></td>
+            </tr>
+            @endforeach
+          </table>
+        </table>
+@stop
 @section('content')
 <div class="panel panel-primary">
   <div class="panel-heading">
