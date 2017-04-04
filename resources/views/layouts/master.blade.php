@@ -9,6 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src="{{URL::asset('js/bootstrap.min.js')}}"></script>
   <script type="text/javascript" src="{{URL::asset('js/main.js')}}"></script>
+  <script type="text/javascript" src="{{URL::asset('js/script.js')}}"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -73,8 +74,8 @@
           <a href="#" style="font-size:16px;"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->login }}<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Recargar Coins</a></li>
-            <li><a href="#">Tienda</a></li>
-            <li><a href="#">Panel de Usuario</a></li>
+            <li><a href="/tienda-de-articulos/">Tienda</a></li>
+            <li><a href="/panel-de-usuario/">Panel de Usuario</a></li>
             <li><a href="/cerrar-session">Salir</a></li>
           </ul>
         </li>

@@ -28,12 +28,12 @@ class FuncionesController extends Controller
 
     public function CheckCoins($vnum)
     {
-        $query = DB::table('account.account')->select('cash')->where('login', Auth::user()->login)->first();
+        $query = DB::table('account.account')->select('cash as coins')->where('login', Auth::user()->login)->first();
         if ($query->coins >= $this->CheckItemExist($vnum)) {
             $coinsResult = ($query->coins - $this->CheckItemExist($vnum));
             if (DB::table('account')
                 ->where('login', Auth::user()->login)
-                ->update(['coins' => $coinsResult])) {
+                ->update(['cash' => $coinsResult])) {
                 return true;
             }
 
@@ -61,12 +61,12 @@ class FuncionesController extends Controller
                 $item_award->count      = $query->count;
                 $item_award->given_time = $now;
                 $item_award->taken_time = null;
-                $item_award->item_id    = 149;
+                $item_award->item_id    = $vnum;
                 $item_award->why        = 'ITEM_SHOP_METIN2';
-                $item_award->socket0    = 1;
-                $item_award->socket1    = 1;
-                $item_award->socket2    = 1;
-                $item_award->mall       = 1;
+                $item_award->socket0    = '1';
+                $item_award->socket1    = '1';
+                $item_award->socket2    = '1';
+                $item_award->mall       = '1';
                 $item_award->save();
 
                 return 'success';

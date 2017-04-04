@@ -44,6 +44,8 @@ Route::post('/inicio-de-session', 'LoginController@getLogin');
 // OUT LOGIN
 Route::get('/cerrar-session', function () {Auth::logout();return redirect('/');});
 
-Route::get('/panel-de-usuario', 'UserPanelController@index');
+// PANEL DE USUARIO
+Route::get('/panel-de-usuario/', 'UserPanelController@index');
+
 // PERFIL DE USUARIO
 Route::get('/perfil/ver/{id}/', 'PerfilController@index');

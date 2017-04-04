@@ -40,7 +40,7 @@ class TiendaController extends Controller
 
         $mensaje = [
             'success' => ['El item ha sido comprado satisfactoriamente', 'success'],
-            'NoCoins' => ['Coins insuficientes, puedes recargar en el siguiente link ...', 'warning'],
+            'NoCoins' => ['Coins insuficientes para comprar el articulo seleccionado.', 'danger'],
             'NoExist' => ['El item seleccionado no existe en la tienda.', 'danger'],
         ];
 
@@ -96,6 +96,6 @@ class TiendaController extends Controller
         $vnum  = $request->vnum;
         $query = DB::table('player.item_proto_shop')->where('vnum', $vnum)->first();
 
-        return view('tienda', ['result' => json_encode($query)]);
+        return view('tienda');
     }
 }
